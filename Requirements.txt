@@ -1,0 +1,5 @@
+Python 3.9+
+PyTorch & Torchvision (CUDA enabled recommended)
+PyTorchVideo
+OpenCV (OpenCV-python)
+NumPy & Scikit-Learn
