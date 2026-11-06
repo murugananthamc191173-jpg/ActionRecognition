@@ -18,3 +18,51 @@ Modern industrial assembly lines increasingly rely on vision-based monitoring sy
 * **`TVS_SlowFast_Test`**: Test script evaluating TVS assembly line operations with the trained SlowFast architecture (`tvs_slowfast.pth`).
 * **Live Webcam / Real-Time Deployment**
 * **`Live_Webcam_Action_Recognition`**: Real-time webcam stream integration (`cv2.VideoCapture(1)`) using a 16-frame rolling buffer for live action recognition via the trained `R3D_18` model.
+### Features
+* Detects and classifies temporal human actions in industrial assembly lines using deep 3D networks (**R3D-18** and **SlowFast**).
+* Supports multiple benchmark and custom datasets: **InHARD**, **KNR**, and **TVS Assembly Line**.
+* Provides real-time unsegmented video inference with frame buffering (`deque`) and live visual overlays.
+* Performs end-to-end video processing from raw `.mp4` video files to sequence-based `.png` frame folders.
+* Real-time webcam integration for live action detection and cycle monitoring.
+### Dataset
+* **InHARD Dataset**: 14 assembly actions (e.g., *Assemble system*, *Take screwdriver*, *Consult sheets*).
+* **KNR Dataset**: 5 operational classes (*Checking*, *Missing*, *Picking*, *Rejected*, *Accepted*).
+* **TVS Dataset**: 6 frame-based assembly actions (*Fixingbackscrew*, *Fixing frame*, *Fixingfrontscrew*, *Fixingmiddlescrew*, *Gettingtheframe*, *Pickingscrews*).
+* Configurable input pipelines handling both multi-channel video files (`.mp4`) and ordered image sequence folders (`.png`).
+### Model Training
+* **R3D-18 Backbone**: 3D ResNet initialized with Kinetics-400 pretrained weights, processing 16-frame temporal windows resized to $112 \times 112$.
+* **SlowFast Backbone**: Dual-pathway architecture (*Slow*: 8 frames for spatial detail; *Fast*: 32 frames for motion dynamic) using $224 \times 224$ resolutions.
+* Optimization with Cross-Entropy Loss and Adam optimizer across 25 epochs.
+* Automatic model serialization saving weight checkpoints (`.pth`).
+### Getting Started
+1. **Install dependencies**:
+```bash
+pip install torch torchvision pytorchvideo opencv-python numpy scikit-learn
+
+```
+2. **Train a model** (e.g., R3D-18 on KNR dataset):
+Execute the corresponding training section in `Code.ipynb` or run:
+```bash
+python train_r3d18_knr.py
+
+```
+3. **Run unsegmented video inference**:
+```bash
+python test_r3d18_video.py --video_path /path/to/video.mp4 --model_path /path/to/model.pth
+
+```
+4. **Run live webcam action recognition**:
+```bash
+python test_live_webcam.py
+
+```
+### Usage
+* Monitor assembly worker actions in real time via live webcam or pre-recorded video feeds.
+* Track real-time processing performance (FPS) and predicted temporal actions on the visual overlay.
+* Train, compare, and benchmark 3D-CNN (`R3D-18`) against dual-pathway architectures (`SlowFast`).
+### Requirements
+* **Python 3.9+**
+* PyTorch & Torchvision (CUDA-enabled recommended)
+* PyTorchVideo
+* OpenCV (`opencv-python`)
+* NumPy & Scikit-Learn
