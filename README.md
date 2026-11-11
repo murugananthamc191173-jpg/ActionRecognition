@@ -66,3 +66,5 @@ python test_live_webcam.py
 * PyTorchVideo
 * OpenCV (`opencv-python`)
 * NumPy & Scikit-Learn
+### Licence
+* This project is for internal use and research purposes.
