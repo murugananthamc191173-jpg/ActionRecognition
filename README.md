@@ -33,7 +33,9 @@ Modern industrial assembly lines increasingly rely on vision-based monitoring sy
 * **R3D-18 Backbone**: 3D ResNet initialized with Kinetics-400 pretrained weights, processing 16-frame temporal windows resized to $112 \times 112$.
 * **SlowFast Backbone**: Dual-pathway architecture (*Slow*: 8 frames for spatial detail; *Fast*: 32 frames for motion dynamic) using $224 \times 224$ resolutions.
 * Optimization with Cross-Entropy Loss and Adam optimizer across 25 epochs.
-* Automatic model serialization saving weight checkpoints (`.pth`).
+* Automatic model serialization, saving weight checkpoints (`.pth`).
+**##** Before running the program, the model path .pth) must be set/modified in the program given
+**##** All '.pth' files are uploaded in the model folder
 ### Getting Started
 1. **Install dependencies**:
 ```bash
