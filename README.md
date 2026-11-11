@@ -35,7 +35,7 @@ Modern industrial assembly lines increasingly rely on vision-based monitoring sy
 * Optimization with Cross-Entropy Loss and Adam optimizer across 25 epochs.
 * Automatic model serialization, saving weight checkpoints (`.pth`).
 **##** Before running the program, the model path .pth) must be set/modified in the program given
-**##** All '.pth' files are uploaded in the model folder
+**##** All '.pth' files are uploaded
 ### Getting Started
 1. **Install dependencies**:
 ```bash
